@@ -1,0 +1,1 @@
+Ausentes no deploy (Pages devolve index.html): banner-BiWX_T0e.jpg, icon-fDp8y_3X.jpg, mark-CaUFCnYV.png, mark-light-LLRPwY3v.png, robots.txt
