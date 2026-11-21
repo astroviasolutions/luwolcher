@@ -12,3 +12,7 @@ Base: backup de 20/11/2026. Cópia corrigida: work/site (só index-B-Eix5hJ.js, 
    NÃO reproduzido (sem Firefox 115 aqui): é correção defensiva; testar no aparelho do vídeo.
 4) Fichas — 307 com chaves antigas; 249 já têm as novas espelhadas; 54 só antigas. sql/04_fichas_formato_antigo.sql
    acrescenta só as chaves novas que faltam (backup + reversão incluídos). Não aplicado.
+
+5) (21/11) Termo "não salva / precisa sair e entrar": logs do Supabase mostram 0 uploads recusados pelo servidor; todos os PDFs têm 3,1–3,4 MB
+   (jsPDF sem compressão + assinatura PNG) e há rajadas de 401 ao voltar do 2º plano (token vencido).
+   Correção: PDF comprimido (teste: 2,1 MB -> 39 KB), renovação da sessão antes do upload e até 3 tentativas em falha de rede/token.
