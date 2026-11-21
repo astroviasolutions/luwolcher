@@ -16,3 +16,6 @@ Base: backup de 20/11/2026. Cópia corrigida: work/site (só index-B-Eix5hJ.js, 
 5) (21/11) Termo "não salva / precisa sair e entrar": logs do Supabase mostram 0 uploads recusados pelo servidor; todos os PDFs têm 3,1–3,4 MB
    (jsPDF sem compressão + assinatura PNG) e há rajadas de 401 ao voltar do 2º plano (token vencido).
    Correção: PDF comprimido (teste: 2,1 MB -> 39 KB), renovação da sessão antes do upload e até 3 tentativas em falha de rede/token.
+
+6) (21/11) v3: botão "Salvar termo assinado" também dentro do corpo do termo, logo abaixo da assinatura (rodapé do modal ficava
+   fora da tela em janelas baixas no Windows/Chrome); clique fora do modal do termo não fecha mais (perdia a assinatura).
