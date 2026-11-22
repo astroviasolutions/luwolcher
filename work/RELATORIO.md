@@ -19,3 +19,8 @@ Base: backup de 20/11/2026. Cópia corrigida: work/site (só index-B-Eix5hJ.js, 
 
 6) (21/11) v3: botão "Salvar termo assinado" também dentro do corpo do termo, logo abaixo da assinatura (rodapé do modal ficava
    fora da tela em janelas baixas no Windows/Chrome); clique fora do modal do termo não fecha mais (perdia a assinatura).
+
+7) (22/11) v4: causa real do termo "desenquadrado" e do clique-fora que fechava tudo: o termo abre DENTRO do modal da ficha; a animação
+   "both" do modal da ficha (tema v2) mantinha transform ativo e fazia o termo posicionar-se pela caixa da ficha (e não pela tela);
+   o clique "fora" caía no fundo da ficha e fechava tudo. Correção só em CSS (animation-fill-mode:backwards).
+   Testado em navegador com Supabase simulado: termo cobre a tela (0,0,740x800), clique fora não fecha, salvar gera PDF de ~113 KB.

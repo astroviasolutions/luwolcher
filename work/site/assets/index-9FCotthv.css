@@ -3,3 +3,6 @@
 /* ajuste: rodapé do modal (botão Salvar) nunca é espremido nem some em telas baixas / Firefox antigo */
 .modal-foot{flex-shrink:0}
 .modal-body{min-height:0;flex:1 1 auto}
+/* ajuste: a animação "both" deixava transform ativo no modal da ficha, e janelas abertas por dentro dele (termo) passavam a se posicionar
+   pela caixa da ficha, não pela tela: ficavam desenquadradas e o clique fora fechava a ficha inteira */
+html.v2[data-bb-theme] .modal,html.v2[data-bb-theme] .modal.v-from{animation-fill-mode:backwards}
