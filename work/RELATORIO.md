@@ -24,3 +24,7 @@ Base: backup de 20/11/2026. Cópia corrigida: work/site (só index-B-Eix5hJ.js, 
    "both" do modal da ficha (tema v2) mantinha transform ativo e fazia o termo posicionar-se pela caixa da ficha (e não pela tela);
    o clique "fora" caía no fundo da ficha e fechava tudo. Correção só em CSS (animation-fill-mode:backwards).
    Testado em navegador com Supabase simulado: termo cobre a tela (0,0,740x800), clique fora não fecha, salvar gera PDF de ~113 KB.
+
+8) (25/11) v5: Caixa — desconto por item (serviço/produto), ao lado do acréscimo que já existia (botão ↗ da linha): campo "Desconto R$ ou %"
+   + motivo. O preço do item passa a ser base + acréscimo − desconto, e a comissão já sai sobre esse valor (testado: 85 −20% = 68; comissão 60% = R$ 40,80).
+   Aparece também no detalhe da venda. NÃO feito ainda: profissional por item no caixa (exige dividir a venda por profissional; ver proposta).
