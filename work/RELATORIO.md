@@ -28,3 +28,13 @@ Base: backup de 20/11/2026. Cópia corrigida: work/site (só index-B-Eix5hJ.js, 
 8) (25/11) v5: Caixa — desconto por item (serviço/produto), ao lado do acréscimo que já existia (botão ↗ da linha): campo "Desconto R$ ou %"
    + motivo. O preço do item passa a ser base + acréscimo − desconto, e a comissão já sai sobre esse valor (testado: 85 −20% = 68; comissão 60% = R$ 40,80).
    Aparece também no detalhe da venda. NÃO feito ainda: profissional por item no caixa (exige dividir a venda por profissional; ver proposta).
+
+9) (25/11) v7: Caixa — profissional por item e pagamento opcional por item (tools/patch6.py; teste: tools/h10.js).
+   - Cada serviço/produto do carrinho tem seletor "Profissional" (só quem faz o serviço; oculto para perfil barber) e "Pagamento" (Geral/Pix/Dinheiro/Débito/Crédito).
+   - Agenda dividida: ao abrir "Cobrar no caixa" (antes "Cobrar só este"), os agendamentos irmãos (mesma cliente, mesmo dia, outra profissional, status agendado/confirmado — mesma regra das Comandas; não há id de grupo) entram no carrinho já com a profissional de cada um.
+   - Finalizar gera UMA venda por profissional. Desconto geral (manual/benefício) repartido proporcional ao valor de cada profissional; adicional fica com a profissional da venda; insumos na venda principal.
+   - Comissão sempre sobre o valor pago (desconto por item + parcela do desconto geral), com as taxas da própria profissional.
+   - Pagamento por item sem escolha segue o geral. Venda com formas mistas grava "dinheiro R$ 42,30 + credito R$ 76,50"; juros/taxa de cartão calculados por forma. Saldo/fiado/permuta/pacote e dívida da cliente só no geral, aplicados UMA vez.
+   - Sem divisão e sem pagamento por item: caminho antigo, idêntico.
+   Testado (Supabase simulado): 2 profissionais, sem desconto (85/47, comissão 51/37,60), desconto 10% (76,50/42,30), pagamento misto, tudo na mesma profissional.
+   Riscos: fidelidade/clube contam por venda (benefício clube/runas só na 1ª venda; visita de agendamento dividido conta mais de 1 — já ocorria no "Fechar comanda"); falha na 2ª venda deixa a 1ª gravada (o app avisa e tira os itens já gravados do carrinho); agendamento irmão cujos itens forem todos trocados de profissional é marcado concluído por atualização direta. NÃO testado com Supabase real, nem em edição de venda (edição segue com 1 profissional).
